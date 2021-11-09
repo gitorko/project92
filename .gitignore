@@ -5,6 +5,7 @@
 #REACT
 ################################################################################
 /ui/node_modules/
+/ui/dist
 
 # dependencies
 /node_modules

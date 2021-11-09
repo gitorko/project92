@@ -1,44 +1,48 @@
 <div class="content-container">
   <div class="content-area">
-
     <div class="clr-row">
-
       <div class="clr-col-12">
-        <p style="text-align: center">
-<!--          Server Time: {{currentTime | date:'dd-MM-yyyy' }}-->
-        </p>
+        <p>Online status: {{chatStatus}}</p>
+        <button class="btn" (click)="connect()" [disabled]="chatStatus === 'Connected'">Connect</button>
+        <button class="btn" (click)="disconnect()" [disabled]="chatStatus !== 'Connected'">Disconnect</button>
+        <br/>
+        <form class="clr-form clr-form-horizontal">
+          <div class="clr-form-control">
 
-        <h2 style="text-align: center">Chat</h2>
+            <label for="message" class="clr-control-label">Message</label>
+            <div class="clr-control-container">
+              <div class="clr-input-wrapper">
+                <input [(ngModel)]="message" type="text" id="message" name="message" size="50"
+                       placeholder="message" class="clr-input"/>
+              </div>
+            </div>
+          </div>
+          <div class="clr-form-control">
+            <div class="clr-control-container">
+              <button type="submit" class="btn btn-primary btn-block" (click)="sendMessage()"
+                      [disabled]="chatStatus !== 'Connected'">Send
+              </button>
+            </div>
+          </div>
+        </form>
 
-        <div class="clr-col-12">
-          <form class="clr-form clr-form-horizontal">
-            <div class="clr-form-control">
-              <label for="firstName" class="clr-control-label">First Name</label>
-              <div class="clr-control-container">
-                <div class="clr-input-wrapper">
-                  <!-- two way data binding -->
-                  <input type="text" id="firstName" name="firstName"
-                         placeholder="Placeholder" class="clr-input"/>
-                </div>
-              </div>
-            </div>
-            <div class="clr-form-control">
-              <label for="lastName" class="clr-control-label">Last Name</label>
-              <div class="clr-control-container">
-                <div class="clr-input-wrapper">
-                  <input type="text" id="lastName" name="lastName"
-                         placeholder="Placeholder" class="clr-input"/>
-                </div>
-              </div>
-            </div>
-            <div class="clr-form-control">
-              <div class="clr-control-container">
-                <!-- event binding -->
-                <button type="submit" class="btn btn-primary">Save</button>
-              </div>
-            </div>
-          </form>
-        </div>
+        <table class="table">
+          <caption>
+            Chat Messages
+          </caption>
+          <thead>
+          <th class="left">From</th>
+          <th class="left">Message</th>
+          <th class="left">Sent At</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let msg of websocketService.messageList">
+            <td class="left">{{msg.from}}</td>
+            <td class="left">{{msg.text}}</td>
+            <td class="left">{{msg.sentAt}}</td>
+          </tr>
+          </tbody>
+        </table>
 
       </div>
     </div>
