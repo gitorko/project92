@@ -36,7 +36,7 @@
           <th class="left">Sent At</th>
           </thead>
           <tbody>
-          <tr *ngFor="let msg of websocketService.messageList">
+          <tr *ngFor="let msg of messageList">
             <td class="left">{{msg.from}}</td>
             <td class="left">{{msg.text}}</td>
             <td class="left">{{msg.sentAt}}</td>
