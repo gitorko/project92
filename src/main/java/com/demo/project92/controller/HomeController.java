@@ -18,7 +18,7 @@ class HomeController {
 
     @MessageMapping("/send/message")
     @SendTo("/message")
-    public ChatMessage sendMessage(SimpMessageHeaderAccessor sha, ChatMessage chat) {
+    public ChatMessage broadcastMessage(SimpMessageHeaderAccessor sha, ChatMessage chat) {
         chat.setFrom(sha.getUser().getName());
         chat.setSentAt(LocalDateTime.now().toString());
         log.info("Received message: {}", chat);
