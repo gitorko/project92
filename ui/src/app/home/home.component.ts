@@ -41,8 +41,8 @@ export class HomeComponent implements OnInit {
   disconnect() {
     if (this.stompClient !== null) {
       this.stompClient.disconnect();
-      this.chatStatus = 'Disconnected';
     }
+    this.chatStatus = 'Disconnected';
     console.log("Disconnected");
   }
 
