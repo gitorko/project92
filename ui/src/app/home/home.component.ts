@@ -29,13 +29,13 @@ export class HomeComponent implements OnInit {
     this.stompClient = Stomp.over(ws);
     const that = this;
     this.stompClient.connect({}, function (frame: any) {
+      that.chatStatus = 'Connected';
       that.stompClient.subscribe('/message', (message: any) => {
         if (message.body) {
           that.messageList.push(JSON.parse(message.body));
         }
       });
     }, this.errorCallBack);
-    this.chatStatus = 'Connected';
   }
 
   disconnect() {
