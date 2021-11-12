@@ -23,8 +23,10 @@ export class HomeComponent implements OnInit {
   }
 
   connect() {
-    console.log(window.location.href);
-    const serverUrl = 'http://localhost:8080/chat-app';
+    let baseUrl = window.location.href;
+    baseUrl = baseUrl.substr(0,baseUrl.indexOf('#'));
+    const serverUrl = baseUrl + 'chat-app';
+    console.log(serverUrl);
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
     const that = this;
