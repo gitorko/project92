@@ -4,7 +4,6 @@ Chat Server
 
 [https://gitorko.github.io/chat-server/](https://gitorko.github.io/chat-server/)
 
-
 ### Version
 
 Check version
