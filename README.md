@@ -22,14 +22,14 @@ $yarn --version
 
 ### Dev
 
-To Run backend in DEV mode
+To Run backend in dev mode
 
 ```bash
 ./gradlew clean build
 ./gradlew bootRun
 ```
 
-To Run UI in DEV mode
+To Run UI in dev mode
 
 ```bash
 cd ui
